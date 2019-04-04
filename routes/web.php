@@ -11,6 +11,9 @@
 |
 */
 
+
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +21,25 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+$data = [
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
+//    'middleware' => 'auth'
+];
+Route::group($data, function () {
+
+    Route::resource('/products', 'ProductController')->except([
+        'show'
+    ]);
+    Route::resource('/prints', 'PrintsController')->except([
+        'show'
+    ]);
+    Route::resource('/phones', 'PhoneTypeController')->except([
+        'show'
+    ]);
+    Route::resource('/collections', 'CollectionPrintController')->except([
+        'show'
+    ]);
+
+});

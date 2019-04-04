@@ -16,6 +16,8 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->bigInteger('print_model_id')->nullable();
+            $table->bigInteger('phone_type_id')->nullable();
             $table->timestamps();
         });
     }

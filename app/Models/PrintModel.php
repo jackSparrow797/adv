@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PhoneType extends Model
+class PrintModel extends Model
 {
     protected $fillable = [
         'title'
@@ -14,4 +14,10 @@ class PhoneType extends Model
     {
         return $this->hasMany('App\Models\Product');
     }
+
+    public function CollectionPrints()
+    {
+        return $this->belongsToMany('App\Models\CollectionPrint');
+    }
+
 }
